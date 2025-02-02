@@ -1,11 +1,9 @@
-function App() {
+export const Comments = () => {
   return (
-    <>
+    <div className="bg-gray-100 dark:bg-gray-800">
       <h1 className="text-3xl font-bold underline text-blue-800 dark:text-amber-300 dark:bg-gray-800">
-        Hello world!
+        Comments
       </h1>
-    </>
+    </div>
   );
-}
-
-export default App;
+};
