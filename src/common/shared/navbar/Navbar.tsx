@@ -1,12 +1,14 @@
-import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { IconMenu2, IconX } from "@tabler/icons-react";
+import { appRoutes } from "@/common/routing";
 
 interface NavbarProps {
   routes: Record<string, string>;
 }
 
 export const Navbar = ({ routes }: NavbarProps) => {
+  const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -18,10 +20,16 @@ export const Navbar = ({ routes }: NavbarProps) => {
     setMenuOpen(false);
   };
 
+  useEffect(() => {
+    if (window.location.pathname === "/") {
+      navigate(appRoutes.home);
+    }
+  }, [navigate]);
+
   return (
     <nav className="relative flex items-center justify-between bg-gray-800 text-white p-4">
       {/* Logo / Brand */}
-      <Link to="/">
+      <Link to={appRoutes.home}>
         <img
           src="/src/assets/logo.jpg"
           alt="logo"
