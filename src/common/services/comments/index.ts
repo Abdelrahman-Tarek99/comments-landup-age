@@ -1,2 +1,2 @@
 export * from "./CommentsInterface"
-export * from "./commentsApi"
+export * from "./CommentsApi"

@@ -1,53 +1,33 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { ICommentCreation, ICommentsResponse } from "./CommentsInterface";
+// commentsApi.ts
+import {axiosInstance} from '@/common/services';
+import { ICommentCreation, ICommentsResponse } from './CommentsInterface';
 
-export const BASEURL= "http://localhost:1337/api/comments"
-export const BASELOCALHOST= "http://localhost:1337"
+// Fetch all comments (with populate)
+export const fetchComments = async (): Promise<ICommentsResponse> => {
+  const response = await axiosInstance.get('?populate=*');
+  return response.data;
+};
 
-export const CommentsApi = createApi({
-  reducerPath: "CommentsApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: BASEURL,
-    headers:{
-      "Authorization": `Bearer ${import.meta.env.VITE_API_KEY}`,
-    }
-  }),
-  tagTypes: ['Comments'],
-  refetchOnFocus: false,
-  endpoints: (builder) => ({
-    getComments: builder.query<ICommentsResponse, void>({ query: () => `?populate=*` ,
-      providesTags: [{ type: 'Comments' }],
-    }),
-    getCommentById: builder.query({
-      query: (id: number) => `${id}`,
-    }),
-    createComment: builder.mutation({
-      query: (newPost:ICommentCreation) => ({
-        url: "",
-        method: "POST",
-        body: newPost,
-      }),
-    }),
-    deleteComment: builder.mutation({
-      query: (id: number) => ({
-        url: `/${id}`,
-        method: "DELETE",
-      }),
-    }),
-    editComment: builder.mutation({
-      query: (newPost: ICommentCreation) => ({
-        url: `/${newPost.id}`,
-        method: "PUT",
-        body: newPost,
-      }),
-    }),
-  }),
-});
+// Fetch a comment by its ID
+export const fetchCommentById = async (id: number) => {
+  const response = await axiosInstance.get(`/${id}`);
+  return response.data;
+};
 
-export const {
-  useGetCommentsQuery,
-  useGetCommentByIdQuery,
-  useCreateCommentMutation,
-  useDeleteCommentMutation,
-  useEditCommentMutation,
-} = CommentsApi;
+// Create a new comment
+export const createComment = async (newComment: ICommentCreation) => {
+  const response = await axiosInstance.post('', newComment);
+  return response.data;
+};
+
+// Delete a comment by ID
+export const deleteComment = async (id: number) => {
+  const response = await axiosInstance.delete(`/${id}`);
+  return response.data;
+};
+
+// Edit a comment (update)
+export const editComment = async (newComment: ICommentCreation) => {
+  const response = await axiosInstance.put(`/${newComment.id}`, newComment);
+  return response.data;
+};

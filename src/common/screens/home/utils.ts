@@ -1,4 +1,4 @@
-import { BASELOCALHOST, CommentData, ICommentsResponse } from "@/common/services/comments";
+import { BASELOCALHOST, CommentData, ICommentsResponse } from "@/common/services";
 
 export function formatComments(comments: ICommentsResponse): CommentData[] {
   return comments.data.map((comment) => {
