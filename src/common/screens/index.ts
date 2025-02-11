@@ -1,5 +1,5 @@
 export * from "./home";
 export * from "./about";
-export * from "./comments";
+export * from "./leaveAComment";
 export * from "./contact";
 export * from "./comment";

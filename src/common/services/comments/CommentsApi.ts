@@ -1,22 +1,24 @@
 // commentsApi.ts
-import {axiosInstance} from '@/common/services';
-import { ICommentCreation, ICommentsResponse } from './CommentsInterface';
+import { axiosInstance } from "@/common/services";
+import { ICommentCreation, ICommentsResponse } from "./CommentsInterface";
 
 // Fetch all comments (with populate)
 export const fetchComments = async (): Promise<ICommentsResponse> => {
-  const response = await axiosInstance.get('?populate=*');
+  const response = await axiosInstance.get("?populate=*");
   return response.data;
 };
 
 // Fetch a comment by its ID
-export const fetchCommentById = async (id: number) => {
-  const response = await axiosInstance.get(`/${id}`);
+export const fetchCommentById = async (
+  id: number
+): Promise<ICommentsResponse> => {
+  const response = await axiosInstance.get(`/${id}?populate=*`);
   return response.data;
 };
 
 // Create a new comment
 export const createComment = async (newComment: ICommentCreation) => {
-  const response = await axiosInstance.post('', newComment);
+  const response = await axiosInstance.post("", newComment);
   return response.data;
 };
 

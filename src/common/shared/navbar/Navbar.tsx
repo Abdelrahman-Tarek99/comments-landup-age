@@ -49,7 +49,9 @@ export const Navbar = ({ routes }: NavbarProps) => {
               className={`
                 px-3 py-1 rounded-md
                 hover:bg-gray-700 transition
-                ${routeName === "comments" ? "border-2 border-white" : ""}
+                ${
+                  routeName === "leave a comment" ? "border-2 border-white" : ""
+                }
               `}
             >
               {routeName.charAt(0).toUpperCase() + routeName.slice(1)}

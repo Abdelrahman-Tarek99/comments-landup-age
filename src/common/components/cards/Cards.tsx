@@ -32,7 +32,7 @@ export const Cards = ({
       viewport={{ once: true, amount: 0.3 }}
       className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-md md:flex md:gap-3 hover:shadow-lg  hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer"
       onClick={() => {
-        navigate(`${appRoutes.comments}/${id}`);
+        navigate(`${appRoutes["leave a comment"]}/${id}`);
       }}
     >
       <div className="relative flex w-14 h-14 md:h-10 md:w-10 shrink-0 overflow-hidden rounded-full m-auto md:m-0 md:my-auto">

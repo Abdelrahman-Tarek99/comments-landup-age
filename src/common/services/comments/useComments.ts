@@ -1,22 +1,22 @@
 // useComments.ts
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   fetchComments,
   fetchCommentById,
   createComment,
   deleteComment,
   editComment,
-} from '@/common/services';
-import {  ICommentsResponse } from './CommentsInterface';
+} from "@/common/services";
+import { ICommentsResponse } from "./CommentsInterface";
 
 // Hook to fetch all comments
 export const useComments = () => {
-  return useQuery<ICommentsResponse, Error>(['comments'], fetchComments);
+  return useQuery<ICommentsResponse, Error>(["comments"], fetchComments);
 };
 
 // Hook to fetch a single comment by ID
-export const useComment = (id: number) => {
-  return useQuery(['comment', id], () => fetchCommentById(id));
+export const useGetCommentById = (id: number) => {
+  return useQuery(["comment", id], () => fetchCommentById(id));
 };
 
 // Hook to create a new comment
@@ -25,7 +25,7 @@ export const useCreateComment = () => {
   return useMutation(createComment, {
     onSuccess: () => {
       // Invalidate and refetch the comments list after a new comment is created
-      queryClient.invalidateQueries(['comments']);
+      queryClient.invalidateQueries(["comments"]);
     },
   });
 };
@@ -36,7 +36,7 @@ export const useDeleteComment = () => {
   return useMutation(deleteComment, {
     onSuccess: () => {
       // Invalidate the comments list cache so it refetches
-      queryClient.invalidateQueries(['comments']);
+      queryClient.invalidateQueries(["comments"]);
     },
   });
 };
@@ -47,7 +47,7 @@ export const useEditComment = () => {
   return useMutation(editComment, {
     onSuccess: () => {
       // Invalidate the comments list cache so it refetches
-      queryClient.invalidateQueries(['comments']);
+      queryClient.invalidateQueries(["comments"]);
     },
   });
 };

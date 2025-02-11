@@ -2,6 +2,6 @@ export const appRoutes = {
   home: "/home",
   about: "/about",
   contact: "/contact",
-  comments: "/comments",
+  "leave a comment": "/comments",
   comment: "/comments/:id",
 };

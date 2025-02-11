@@ -1,7 +1,10 @@
+import { EditCommentForm } from "@/common/screens/comment";
+import { CommentProvider } from "./commentProvider";
+
 export const Comment = () => {
   return (
-    <div>
-      <h1>comment</h1>
-    </div>
+    <CommentProvider>
+      <EditCommentForm />;
+    </CommentProvider>
   );
 };

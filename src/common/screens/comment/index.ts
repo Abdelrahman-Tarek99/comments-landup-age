@@ -1,1 +1,2 @@
-export * from "./comment"
+export * from "./Comment";
+export * from "./partials";

@@ -1,4 +1,10 @@
-import { AboutUs, Comment, Comments, ContactUs, Home } from "@/common/screens";
+import {
+  AboutUs,
+  Comment,
+  LeaveAComment,
+  ContactUs,
+  Home,
+} from "@/common/screens";
 import { createBrowserRouter } from "react-router-dom";
 import { appRoutes } from "./AppRoutes";
 import { Layout } from "../wrappers/Layout";
@@ -21,8 +27,8 @@ export const appRouter = createBrowserRouter([
         element: <ContactUs />,
       },
       {
-        path: appRoutes.comments,
-        element: <Comments />,
+        path: appRoutes["leave a comment"],
+        element: <LeaveAComment />,
       },
       {
         path: appRoutes.comment,
