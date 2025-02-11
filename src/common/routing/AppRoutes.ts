@@ -3,4 +3,5 @@ export const appRoutes = {
   about: "/about",
   contact: "/contact",
   comments: "/comments",
+  comment: "/comments/:id",
 };

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 
 export const CardsComment = () => {
   const { isLoading, isFetching, isError, data, error } = useComments();
+
   useEffect(() => {
     if (isError && error) {
       console.log(`Error fetching comments: ${error.message}`);
@@ -20,7 +21,6 @@ export const CardsComment = () => {
       setComments(formatComments(data));
     }
   }, [data]);
-  console.log(comments);
 
   // Show loading state while fetching initial data
   if (isLoading) {

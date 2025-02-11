@@ -40,7 +40,10 @@ export const Navbar = ({ routes }: NavbarProps) => {
       {/* Desktop Nav (hidden on mobile) */}
       <ul className="hidden md:flex md:gap-4">
         {Object.entries(routes).map(([routeName, path]) => (
-          <li key={routeName}>
+          <li
+            key={routeName}
+            className={`${routeName === "comment" ? "hidden" : ""}`}
+          >
             <NavLink
               to={path}
               className={`
